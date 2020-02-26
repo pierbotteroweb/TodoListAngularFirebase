@@ -1,0 +1,21 @@
+<div *ngIf="contato">
+    <div>
+        <label>Nome: </label>
+        {{ contato.nome }}
+    </div>
+    <div>
+        <label>Idade: </label>
+        {{ contato.idade }}
+    </div>
+    <div>
+        <label>Ativo: </label>
+        {{ contato.ativo }}
+    </div>
+
+    <span class="button is-small btn-primary" *ngIf="contato.ativo" (click)="atualizaAtivo(false)" >Inativo</span>
+    <span class="button is-small btn-primary" *ngIf="!contato.ativo" (click)="atualizaAtivo(true)" >Ativo</span>
+    <span class="button is-small btn-danger" (click)="deletaContato()">Remover</span>
+
+
+
+</div>

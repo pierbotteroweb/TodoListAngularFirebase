@@ -1,21 +1,26 @@
 <div *ngIf="contato">
     <div>
         <label>Nome: </label>
-        {{ contato.nome }}
+        <span *ngIf="!editando" >{{ contato.nome }}</span>
+        <input [(ngModel)]="nome" class="form-control" *ngIf="editando" type="text" [placeholder]="contato.nome" >
     </div>
     <div>
         <label>Idade: </label>
-        {{ contato.idade }}
+        <span *ngIf="!editando" >{{ contato.idade }}</span>
+        <input [(ngModel)]="idade" class="form-control" *ngIf="editando"[placeholder]="contato.idade" >
     </div>
     <div>
         <label>Ativo: </label>
-        {{ contato.ativo }}
+        <span *ngIf="!editando" >{{ contato.ativo }}</span>
+        <input [(ngModel)]="ativo" class="form-control" *ngIf="editando"[placeholder]="contato.ativo" >
     </div>
-
-    <span class="button is-small btn-primary" *ngIf="contato.ativo" (click)="atualizaAtivo(false)" >Inativo</span>
-    <span class="button is-small btn-primary" *ngIf="!contato.ativo" (click)="atualizaAtivo(true)" >Ativo</span>
-    <span class="button is-small btn-danger" (click)="deletaContato()">Remover</span>
+    <br>
 
 
+
+    <span class="is-small btn btn-primary margin-right10" *ngIf="editando" (click)="atualizaAtivo()" >Salvar</span>
+    <span class="is-small btn btn-primary margin-right10" *ngIf="editando" (click)="editando=!editando" >Cancelar</span>
+    <span class="is-small btn btn-success margin-right10"  *ngIf="!editando" (click)="editando=!editando" >Editar</span>
+    <span class="is-small btn btn-danger" (click)="deletaContato()">Remover</span>
 
 </div>

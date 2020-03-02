@@ -10,6 +10,11 @@ import { Contato } from '../contato';
 export class ContatosDetalhesComponent implements OnInit {
 
   @Input() contato: Contato 
+  editando: boolean = false
+  nome: any
+  idade: any
+  ativo: boolean
+  atualizacoes:any={}
 
   constructor(
     private contatoService: ContatoService
@@ -18,9 +23,18 @@ export class ContatosDetalhesComponent implements OnInit {
   ngOnInit() {
   }
 
-  atualizaAtivo(estaAtivo: boolean): void {
+  atualizaAtivo(): void {
+    if(this.ativo){
+      this.atualizacoes['ativo']=this.ativo
+    }
+    if(this.nome){
+      this.atualizacoes['nome']=this.nome
+    }
+    if(this.idade){
+      this.atualizacoes['idade']=this.idade
+    }
     this.contatoService
-    .updateContato(this.contato.key, {ativo: estaAtivo})
+    .updateContato(this.contato.key, this.atualizacoes)
     .catch(erro => console.log(erro))
   }
 

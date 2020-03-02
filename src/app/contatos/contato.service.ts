@@ -8,6 +8,7 @@ import { Contato } from "./contato";
 export class ContatoService {
 
   private dbCaminho ='/contato'
+  
   contatoRef: AngularFireList<Contato> = null
 
   constructor(private db: AngularFireDatabase) {

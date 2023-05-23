@@ -11,6 +11,10 @@ const routes: Routes = [
   { path: 'adicionar', component: CriarContatoComponent}
 ];
 
+
+
+
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
